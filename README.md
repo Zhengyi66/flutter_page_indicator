@@ -1,0 +1,2 @@
+# flutter_page_indicator
+Flutter PageView indicator，支持自动定义圆点样式。使用StreamBuilder刷新效率更高
