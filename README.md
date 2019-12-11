@@ -1,14 +1,7 @@
 # flutter_page_indicator
 
-A new Flutter plugin.
+flutter pageview指示器。支持自定义指示器样式
 
-## Getting Started
+## 效果图
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![运行效果](https://github.com/Zhengyi66/flutter_page_indicator/blob/master/screenshot/page.gif)
