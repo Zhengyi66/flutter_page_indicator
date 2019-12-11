@@ -11,17 +11,17 @@ class PageIndicator extends StatefulWidget {
   ///PageController
   final PageController pageController;
 
-  ///默认颜色
-  final Color defaultColor;
+  ///普通颜色
+  final Color normalColor;
 
-  ///默认宽度
-  final double defaultWidth;
+  ///普通宽度
+  final double normalWidth;
 
-  ///默认高度
-  final double defaultHeight;
+  ///普通高度
+  final double normalHeight;
 
-  ///默认Decoration
-  final Decoration defaultDecoration;
+  ///普通Decoration
+  final Decoration normalDecoration;
 
   ///当前颜色
   final Color currentColor;
@@ -41,10 +41,10 @@ class PageIndicator extends StatefulWidget {
     Key key,
     this.length,
     this.pageController,
-    this.defaultColor = Colors.white,
-    this.defaultWidth = 8,
-    this.defaultHeight = 8,
-    this.defaultDecoration,
+    this.normalColor = Colors.white,
+    this.normalWidth = 8,
+    this.normalHeight = 8,
+    this.normalDecoration,
     this.currentColor = Colors.grey,
     this.currentWidth = 8,
     this.currentHeight = 8,
@@ -59,23 +59,22 @@ class PageIndicator extends StatefulWidget {
 }
 
 class _PageState extends State<PageIndicator> {
+
   StreamController _streamController;
-  double page = 0;
 
   @override
   void initState() {
     super.initState();
     _streamController = StreamController<double>();
     widget.pageController.addListener((){
-      page = widget.pageController.page;
-      _streamController.sink.add(page);
+        _streamController.sink.add(widget.pageController.page);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.defaultWidth * widget.length +
+      width: widget.normalWidth * widget.length +
           widget.padding * (widget.length + 1),
       height: widget.currentHeight,
       child: Stack(
@@ -86,27 +85,30 @@ class _PageState extends State<PageIndicator> {
             right: 0,
             top: 0,
             bottom: 0,
+            ///普通圆点用ListView显示
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.length,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (_, position) {
                   return Container(
-                    width: widget.defaultWidth,
-                    height: widget.defaultHeight,
+                    width: widget.normalWidth,
+                    height: widget.normalHeight,
                     margin: EdgeInsets.only(
                         left: widget.padding),
-                    decoration: widget.defaultDecoration ??
+                    decoration: widget.normalDecoration ??
                         BoxDecoration(
-                            color: widget.defaultColor, shape: BoxShape.circle),
+                            color: widget.normalColor, shape: BoxShape.circle),
                   );
                 }),
           ),
           Positioned(
+            ///StreamBuilder刷新
             child: StreamBuilder<double>(
                 stream: _streamController.stream,
                 initialData: 0,
                 builder: (context, snapshot) {
+                  ///表示当前进度的圆点
                   return Container(
                     width: widget.currentWidth,
                     height: widget.currentHeight,
@@ -124,16 +126,13 @@ class _PageState extends State<PageIndicator> {
     );
   }
 
-
   double left(double page){
-    if(widget.currentWidth > widget.defaultWidth){
-      return widget.defaultWidth * page + widget.padding*page + widget.padding - (widget.currentWidth - widget.defaultWidth)/2;
+    if(widget.currentWidth > widget.normalWidth){
+      return widget.normalWidth * page + widget.padding*page + widget.padding - (widget.currentWidth - widget.normalWidth)/2;
     }else{
-      return (widget.defaultWidth * page + (page+1) * widget.padding);
+      return (widget.normalWidth * page + (page+1) * widget.padding);
     }
-
   }
-
 
   @override
   void dispose() {
