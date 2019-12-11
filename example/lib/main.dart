@@ -1,6 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_page_indicator/page_indicator.dart';
+import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,15 +9,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  StreamController<int> streamController;
-  StreamController<int> secondStreamController;
+  PageController pageController;
+  PageController secondController;
 
   @override
   void initState() {
     super.initState();
-    streamController = StreamController<int>();
-    secondStreamController = StreamController();
+    pageController = PageController();
+    secondController = PageController();
   }
 
   @override
@@ -33,76 +31,96 @@ class _MyAppState extends State<MyApp> {
             children: <Widget>[
               Container(
                 height: 150,
-                child: PageContainer(
-                  child: PageView(
-                    children: <Widget>[
-                      Container(
-                        color: Colors.amber[100],
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      child: PageView(
+                        controller: pageController,
+                        children: <Widget>[
+                          Container(
+                            color: Colors.amber[100],
+                          ),
+                          Container(
+                            color: Colors.amber[200],
+                          ),
+                          Container(
+                            color: Colors.amber[300],
+                          ),
+                          Container(
+                            color: Colors.amber[400],
+                          ),
+                          Container(
+                            color: Colors.amber[500],
+                          ),
+                          Container(
+                            color: Colors.amber[600],
+                          ),
+                        ],
                       ),
-                      Container(
-                        color: Colors.amber[200],
+                    ),
+                    Positioned(
+                      child: Center(
+                        child: PageIndicator(
+                          length: 6,
+                          pageController: pageController,
+                        ),
                       ),
-                      Container(
-                        color: Colors.amber[300],
-                      ),
-                      Container(
-                        color: Colors.amber[400],
-                      ),
-                      Container(
-                        color: Colors.amber[500],
-                      ),
-                      Container(
-                        color: Colors.amber[600],
-                      ),
-                    ],
-                  ),
-                  indicator: PageIndicator(6, streamController,),
-                  streamController: streamController,
+                      bottom: 10,
+                      left: 0,
+                      right: 0,
+                    )
+                  ],
                 ),
               ),
-
               Padding(padding: EdgeInsets.only(top: 30)),
-
               Container(
                 height: 150,
-                child: PageContainer(
-                  child: PageView(
-                    children: <Widget>[
-                      Container(
-                        color: Colors.amber[100],
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      child: PageView(
+                        controller: secondController,
+                        children: <Widget>[
+                          Container(
+                            color: Colors.amber[100],
+                          ),
+                          Container(
+                            color: Colors.amber[200],
+                          ),
+                          Container(
+                            color: Colors.amber[300],
+                          ),
+                          Container(
+                            color: Colors.amber[400],
+                          ),
+                          Container(
+                            color: Colors.amber[500],
+                          ),
+                          Container(
+                            color: Colors.amber[600],
+                          ),
+                        ],
                       ),
-                      Container(
-                        color: Colors.amber[200],
+                    ),
+                    Positioned(
+                      child: Center(
+                        child: PageIndicator(
+                          length: 6,
+                          pageController: secondController,
+                          currentWidth: 16,
+                          currentDecoration: BoxDecoration(
+                              color: Colors.cyanAccent,
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
                       ),
-                      Container(
-                        color: Colors.amber[300],
-                      ),
-                      Container(
-                        color: Colors.amber[400],
-                      ),
-                      Container(
-                        color: Colors.amber[500],
-                      ),
-                      Container(
-                        color: Colors.amber[600],
-                      ),
-                    ],
-                  ),
-                  indicator: PageIndicator(6, secondStreamController,
-                    defaultWidth: 10,
-                    padding: 10,
-                    defaultDecoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10),),//borderRadius: BorderRadius.circular(20),
-                    currentWidth: 16,
-                    currentDecoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(10),
-                        gradient: LinearGradient(colors: [Colors.lightGreenAccent, Colors.cyan])),
-                  ),
-                  streamController: secondStreamController,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  padding: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 10,
+                    )
+                  ],
                 ),
               ),
             ],
-
           ),
         ),
       ),
@@ -112,7 +130,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     super.dispose();
-    streamController?.close();
-    secondStreamController?.close();
+    pageController?.dispose();
   }
 }
