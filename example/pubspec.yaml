@@ -1,5 +1,5 @@
-name: flutter_page_indicator_example
-description: Demonstrates how to use the flutter_page_indicator plugin.
+name: pageview_indicator_plugins_example
+description: Demonstrates how to use the pageview_indicator_plugins plugin.
 publish_to: 'none'
 
 environment:
@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_page_indicator:
+  pageview_indicator_plugins:
     path: ../
 
 # For information on the generic Dart part of this file, see the

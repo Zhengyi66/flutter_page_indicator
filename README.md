@@ -1,4 +1,4 @@
-# flutter_page_indicator
+# pageview_indicator_plugins
 
 flutter pageview指示器。支持自定义指示器样式
 

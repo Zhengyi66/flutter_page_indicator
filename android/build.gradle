@@ -1,4 +1,4 @@
-group 'com.zy.flutter_page_indicator'
+group 'com.zy.pageview_indicator_plugins'
 version '1.0-SNAPSHOT'
 
 buildscript {
