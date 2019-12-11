@@ -4,14 +4,14 @@ flutter pageview指示器。支持自定义指示器样式
 
 # 用法
 基本用法：
-```
+```dart
 PageIndicator(
     length: 6,
     pageController: pageController,
 )
 ```
 可以通过自定义Decoration属性修改圆点形状
-```
+```dart
 PageIndicator(
     length: 6,
     pageController: secondController,
