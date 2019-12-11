@@ -3,6 +3,14 @@
 flutter pageview指示器。支持自定义指示器样式
 
 # 用法
+
+在`pubspec.yaml`引入：
+```dart
+dependencies:
+  pageview_indicator_plugins: ^0.0.2
+```
+
+
 基本用法：
 ```dart
 PageIndicator(
