@@ -1,16 +1,27 @@
-# flutter_page_indicator_example
+# flutter_page_indicator
 
-Demonstrates how to use the flutter_page_indicator plugin.
+flutter pageview指示器。支持自定义指示器样式
 
-## Getting Started
+# 用法
+基本用法：
+```dart
+PageIndicator(
+    length: 6,
+    pageController: pageController,
+)
+```
+可以通过自定义Decoration属性修改圆点形状
+```dart
+PageIndicator(
+    length: 6,
+    pageController: secondController,
+    currentWidth: 16,
+    currentDecoration: BoxDecoration(
+              color: Colors.cyanAccent,
+              borderRadius: BorderRadius.circular(10)),
+)
+```
 
-This project is a starting point for a Flutter application.
+## 效果图
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![运行效果](https://github.com/Zhengyi66/flutter_page_indicator/blob/master/screenshot/page.gif)
