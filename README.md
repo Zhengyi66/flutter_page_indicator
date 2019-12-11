@@ -32,4 +32,4 @@ PageIndicator(
 
 ## 效果图
 
-![运行效果](https://github.com/Zhengyi66/flutter_page_indicator/blob/master/screenshot/page.gif)
+![gif](https://github.com/Zhengyi66/flutter_page_indicator/blob/master/screenshot/page.gif)
